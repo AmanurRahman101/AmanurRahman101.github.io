@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automated News Publishing | Project Details | Amanur Rahman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #05060a;
+      color: #e6e9f2;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    .font-display { font-family: 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.02em; }
+    .font-sub { font-family: 'Space Grotesk', Inter, sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+    
+    .text-neon-amber { color: #ffb547; }
+    .text-neon-cyan { color: #00e5ff; }
+    .text-neon-magenta { color: #ff2bd6; }
+    .text-chrome-200 { color: #e6e9f2; }
+    .text-chrome-300 { color: #c8ccd9; }
+    .text-chrome-500 { color: #7a8299; }
+    .text-chrome-700 { color: #4a5066; }
+    .bg-obsidian { background-color: #05060a; }
+    .bg-asphalt { background-color: #0a0c14; }
+    .bg-chrome { background-color: #1a1d28; }
+    
+    .glow-text-amber { text-shadow: 0 0 10px rgba(255, 181, 71, 0.5), 0 0 20px rgba(255, 181, 71, 0.3); }
+    
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(255, 255, 255, 0.015) 2px, rgba(255, 255, 255, 0.015) 3px);
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.4;
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 5rem 0; }
+    .grid-2 { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(10, 12, 20, 0.7);
+      border: 1px solid rgba(255, 181, 71, 0.3);
+      color: #ffb547;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    }
+    .btn:hover {
+      border-color: rgba(255, 181, 71, 0.6);
+      background: rgba(255, 181, 71, 0.05);
+    }
+    .btn-secondary {
+      border-color: rgba(122, 130, 153, 0.3);
+      color: #7a8299;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(122, 130, 153, 0.6);
+      color: #c8ccd9;
+    }
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255, 181, 71, 0.2);
+      border-radius: 4px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .tech-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(255, 181, 71, 0.1);
+      border: 1px solid rgba(255, 181, 71, 0.2);
+      color: #7a8299;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      margin: 0.25rem;
+    }
+    
+    .neon-rail {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #ffb547 0%, #ff2bd6 50%, #ffb547 100%);
+      box-shadow: 0 0 10px rgba(255, 181, 71, 0.5), 0 0 20px rgba(255, 181, 71, 0.3);
+    }
+    
+    .feature-card {
+      position: relative;
+      padding: 2rem;
+      background: rgba(10, 12, 20, 0.6);
+      border: 1px solid rgba(122, 130, 153, 0.2);
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 181, 71, 0.5), transparent);
+    }
+    
+    .diagram-box {
+      padding: 2rem;
+      background: rgba(26, 29, 40, 0.8);
+      border: 1px solid rgba(255, 181, 71, 0.2);
+      text-align: center;
+      color: #4a5066;
+    }
+    
+    .workflow-node {
+      background: rgba(10, 12, 20, 0.8);
+      border: 1px solid rgba(255, 181, 71, 0.3);
+      padding: 1rem 1.5rem;
+      margin: 0.5rem;
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in { animation: fadeInUp 0.6s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    
+    .chrome-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(122, 130, 153, 0.5), transparent);
+    }
+  </style>
+</head>
+<body class="bg-obsidian">
+  <div class="scanlines"></div>
+  
+  <nav style="padding: 1.5rem 0; border-bottom: 1px solid rgba(122, 130, 153, 0.2);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../" class="font-mono text-chrome-500" style="text-decoration: none; font-size: 0.875rem;">
+        <span style="color: #ffb547;">←</span> BACK TO PORTFOLIO
+      </a>
+      <span class="font-mono text-chrome-700" style="font-size: 0.75rem;">AUTO_01 / WORKFLOW</span>
+    </div>
+  </nav>
+
+  <section style="padding: 4rem 0 3rem; position: relative;">
+    <div class="container">
+      <div style="position: relative; padding-left: 2rem;">
+        <div class="neon-rail"></div>
+        
+        <div class="animate-in">
+          <span class="font-mono text-neon-amber" style="font-size: 0.75rem; letter-spacing: 0.1em;">// AUTOMATION WORKFLOW</span>
+        </div>
+        
+        <h1 class="font-display animate-in delay-1" style="font-size: clamp(2.5rem, 7vw, 5rem); margin: 1rem 0; line-height: 0.95;">
+          <span class="text-neon-amber glow-text-amber">AUTOMATED</span><br>
+          <span style="color: #e6e9f2;">NEWS PUBLISHING</span>
+        </h1>
+        
+        <p class="font-sub animate-in delay-2" style="color: #7a8299; font-size: 1.125rem; max-width: 650px; margin: 1.5rem 0;">
+          Fully autonomous AI-driven content curation and publishing engine powered by n8n, 
+          LangChain multi-agent system, and Facebook Graph API
+        </p>
+        
+        <div class="animate-in delay-3" style="margin-top: 2rem;">
+          <a href="#demo" class="btn">View Demo Video</a>
+          <a href="#workflow" class="btn btn-secondary" style="margin-left: 1rem;">Workflow Diagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="chrome-divider"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2 class="font-display text-neon-cyan" style="font-size: 2.5rem; margin-bottom: 1.5rem;">SYSTEM OVERVIEW</h2>
+          <p style="color: #c8ccd9; margin-bottom: 1rem;">
+            The Binary Times is a hands-free content publishing pipeline that transforms tech news 
+            aggregation into a fully automated, AI-curated Facebook publication. From RSS ingestion 
+            to published post, the system operates 24/7 without human intervention.
+          </p>
+          <p style="color: #7a8299;">
+            The workflow leverages a multi-agent architecture where one AI agent acts as Chief Editor 
+            (selecting unique, high-impact stories), while a second agent handles content generation 
+            (writing viral captions and generating image text). All state is persisted to Google Sheets, 
+            creating a continuously learning system that never republishes content.
+          </p>
+        </div>
+        
+        <div style="background: rgba(10, 12, 20, 0.6); padding: 2rem; border: 1px solid rgba(255, 181, 71, 0.2);">
+          <h3 class="font-sub text-chrome-300" style="margin-bottom: 1.5rem; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em;">Tech Stack</h3>
+          <div>
+            <span class="tech-tag">n8n</span>
+            <span class="tech-tag">LangChain</span>
+            <span class="tech-tag">Gemini 2.5 Pro</span>
+            <span class="tech-tag">Facebook Graph API</span>
+            <span class="tech-tag">Google Sheets API</span>
+            <span class="tech-tag">Google Drive API</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">RSS/XML</span>
+          </div>
+          
+          <h3 class="font-sub text-chrome-300" style="margin: 2rem 0 1rem; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em;">Automation Metrics</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <span class="font-mono text-neon-amber" style="font-size: 1.25rem;">24/7</span>
+              <p class="text-chrome-700" style="font-size: 0.875rem;">Autonomous Operation</p>
+            </div>
+            <div>
+              <span class="font-mono text-neon-amber" style="font-size: 1.25rem;">Multi</span>
+              <p class="text-chrome-700" style="font-size: 0.875rem;">Agent System</p>
+            </div>
+            <div>
+              <span class="font-mono text-neon-amber" style="font-size: 1.25rem;">100%</span>
+              <p class="text-chrome-700" style="font-size: 0.875rem;">Unique Content</p>
+            </div>
+            <div>
+              <span class="font-mono text-neon-amber" style="font-size: 1.25rem;">Zero</span>
+              <p class="text-chrome-700" style="font-size: 0.875rem;">Manual Intervention</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="chrome-divider"></div>
+
+  <section id="workflow" class="section" style="background: rgba(10, 12, 20, 0.4);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="font-mono text-neon-magenta" style="font-size: 0.75rem; letter-spacing: 0.1em;">// PIPELINE</span>
+        <h2 class="font-display" style="font-size: 3rem; margin-top: 0.5rem; color: #e6e9f2;">WORKFLOW ARCHITECTURE</h2>
+      </div>
+      
+      <div style="max-width: 900px; margin: 0 auto;">
+        <!-- Workflow Diagram -->
+        <div class="diagram-box" style="margin-bottom: 3rem;">
+          <p class="font-mono">[ n8n Workflow Canvas Screenshot ]</p>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">Visual workflow showing all connected nodes</p>
+        </div>
+        
+        <!-- Workflow Steps -->
+        <div style="display: grid; gap: 1.5rem;">
+          <div class="feature-card">
+            <h3 class="font-sub text-neon-amber" style="margin-bottom: 1rem;">01 — RSS Ingestion & Data Structuring</h3>
+            <p class="text-chrome-500">
+              n8n RSS nodes poll multiple tech publication feeds (The Verge, TechCrunch, Ars Technica, Engadget). 
+              A custom JavaScript execution node parses aggregated JSON, filters domains, and limits story 
+              intake to prevent API rate limiting while maintaining high-quality input.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 class="font-sub text-neon-amber" style="margin-bottom: 1rem;">02 — Agent 1: The Story Selector</h3>
+            <p class="text-chrome-500">
+              LangChain agent connected to Google Sheets tool (historical database) with Buffer Window Memory. 
+              Cross-references incoming news against the last 10 published posts to guarantee 100% unique content, 
+              ranking stories based on "Technical Impact" score. Structured JSON output ensures consistent parsing.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 class="font-sub text-neon-amber" style="margin-bottom: 1rem;">03 — Agent 2: The Content Writer</h3>
+            <p class="text-chrome-500">
+              Gemini 2.5 Pro agent scrapes original article metadata and generates viral, 3-part Facebook caption 
+              (Hook, Deep Dive, Engagement Question) plus a punchy 5-word image overlay text. Structured output 
+              parsers ensure the LLM responds in perfect JSON schema, preventing pipeline crashes.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 class="font-sub text-neon-amber" style="margin-bottom: 1rem;">04 — Dynamic Image Compositing</h3>
+            <p class="text-chrome-500">
+              n8n editImage nodes build branded graphics programmatically: downloads logo from private Google Drive, 
+              resizes and composites onto generated background, renders AI-generated 5-word punchline using custom 
+              font files (Impact.ttf, Times_New_Roman.ttf) with dynamic sizing and line wrapping calculations.
+            </p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 class="font-sub text-neon-amber" style="margin-bottom: 1rem;">05 — Publishing & State Management</h3>
+            <p class="text-chrome-500">
+              Facebook Graph API v23.0 receives multipart form payload with finalized image buffer and AI-generated 
+              caption. Published headline, URL, and timestamp are logged back to Google Sheets, continuously updating 
+              the Story Selector Agent's memory for future deduplication.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="chrome-divider"></div>
+
+  <section id="demo" class="section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="font-mono text-neon-cyan" style="font-size: 0.75rem; letter-spacing: 0.1em;">// DEMO</span>
+        <h2 class="font-display" style="font-size: 3rem; margin-top: 0.5rem; color: #e6e9f2;">SYSTEM DEMONSTRATION</h2>
+        <p class="text-chrome-500" style="margin-top: 0.5rem;">End-to-end workflow from RSS trigger to Facebook publication</p>
+      </div>
+      
+      <div style="max-width: 900px; margin: 0 auto 3rem;">
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+            title="Binary Times Automation Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="font-mono text-chrome-700" style="text-align: center; margin-top: 1rem; font-size: 0.75rem;">
+          Replace with your actual YouTube video ID
+        </p>
+      </div>
+      
+      <div class="grid-2" style="max-width: 900px; margin: 0 auto;">
+        <div>
+          <div class="video-container" style="margin-bottom: 1rem;">
+            <iframe 
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              title="n8n Workflow Editor"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <h4 class="font-sub text-chrome-300">n8n Workflow Canvas</h4>
+          <p class="text-chrome-700" style="font-size: 0.875rem;">Visual node-based automation design</p>
+        </div>
+        <div>
+          <div class="video-container" style="margin-bottom: 1rem;">
+            <iframe 
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              title="Facebook Published Post"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <h4 class="font-sub text-chrome-300">Published Output</h4>
+          <p class="text-chrome-700" style="font-size: 0.875rem;">AI-generated post on Facebook</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="chrome-divider"></div>
+
+  <section class="section" style="background: rgba(10, 12, 20, 0.4);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="font-mono text-neon-magenta" style="font-size: 0.75rem; letter-spacing: 0.1em;">// FUTURE</span>
+        <h2 class="font-display" style="font-size: 3rem; margin-top: 0.5rem; color: #e6e9f2;">EXTENSIONS IN DEVELOPMENT</h2>
+      </div>
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="feature-card">
+          <h3 class="font-sub text-neon-magenta" style="margin-bottom: 1rem;">Flow Scene Builder</h3>
+          <p class="text-chrome-500">
+            Extending the architecture to autonomously generate 60-second Tech News Reels using 
+            <strong>Gemini Advanced (Veo 3.1)</strong> for script generation and visual prompt creation, 
+            paired with <strong>ElevenLabs</strong> for AI voice synthesis. The system will transform 
+            written articles into fully-produced video content ready for TikTok, Instagram Reels, and YouTube Shorts.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="chrome-divider"></div>
+
+  <section class="section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="font-mono text-neon-amber" style="font-size: 0.75rem; letter-spacing: 0.1em;">// GALLERY</span>
+        <h2 class="font-display" style="font-size: 3rem; margin-top: 0.5rem; color: #e6e9f2;">SCREENSHOTS & ASSETS</h2>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto;">
+        <div class="diagram-box" style="aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: center;">
+          <p class="font-mono">[ n8n Workflow Canvas ]</p>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">Full automation workflow</p>
+        </div>
+        <div class="diagram-box" style="aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: center;">
+          <p class="font-mono">[ Agent Configuration ]</p>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">LangChain agent setup</p>
+        </div>
+        <div class="diagram-box" style="aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: center;">
+          <p class="font-mono">[ Generated Post Example ]</p>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">Facebook publication output</p>
+        </div>
+        <div class="diagram-box" style="aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: center;">
+          <p class="font-mono">[ Google Sheets Database ]</p>
+          <p style="font-size: 0.875rem; margin-top: 0.5rem;">Published content log</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding: 3rem 0; border-top: 1px solid rgba(122, 130, 153, 0.2);">
+    <div class="container" style="text-align: center;">
+      <a href="../" class="btn btn-secondary">← Back to Portfolio</a>
+      <p class="font-mono text-chrome-700" style="margin-top: 2rem; font-size: 0.75rem;">
+        n8n Automation · LangChain · Gemini 2.5 Pro · Facebook Graph API · 2026
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

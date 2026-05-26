@@ -1,0 +1,413 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #05060a;
+  color: #e6e9f2;
+  overflow-x: hidden;
+}
+
+/* Neo Tokyo Typography */
+.font-display {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-sub {
+  font-family: 'Space Grotesk', Inter, sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05060a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1d28;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7a8299;
+}
+
+/* Selection */
+::selection {
+  background: rgba(255, 43, 214, 0.3);
+  color: #00e5ff;
+}
+
+/* Scanlines Overlay */
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(255, 255, 255, 0.015) 2px,
+    rgba(255, 255, 255, 0.015) 3px
+  );
+  pointer-events: none;
+}
+
+/* Rain Drift Overlay */
+.rain-drift {
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 100px,
+      rgba(0, 229, 255, 0.01) 100px,
+      rgba(0, 229, 255, 0.01) 101px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 200px,
+      rgba(255, 43, 214, 0.005) 200px,
+      rgba(255, 43, 214, 0.005) 201px
+    );
+  animation: rainDrift 20s linear infinite;
+}
+
+@keyframes rainDrift {
+  0% {
+    transform: translate(-5%, -5%);
+  }
+  100% {
+    transform: translate(5%, 5%);
+  }
+}
+
+/* Horizon Grid - Road perspective */
+.horizon-grid {
+  background: 
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(0, 229, 255, 0.03) 50%,
+      rgba(255, 43, 214, 0.02) 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(0, 229, 255, 0.03) 80px,
+      rgba(0, 229, 255, 0.03) 81px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 80px,
+      rgba(255, 43, 214, 0.02) 80px,
+      rgba(255, 43, 214, 0.02) 81px
+    );
+  transform: perspective(1000px) rotateX(60deg);
+  transform-origin: bottom center;
+}
+
+/* Chrome Split Line */
+.chrome-split {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #00e5ff 25%,
+    #ff2bd6 50%,
+    #00e5ff 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: chromeSweep 4s ease-in-out infinite;
+}
+
+@keyframes chromeSweep {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Boarding Pass Clip Path (Notched Corners) */
+.boarding-pass {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+/* Billboard Rail */
+.billboard-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(
+    180deg,
+    #ff2bd6 0%,
+    #00e5ff 50%,
+    #ff2bd6 100%
+  );
+  background-size: 100% 200%;
+  animation: railPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255, 43, 214, 0.5);
+}
+
+.billboard-rail-cyan {
+  background: linear-gradient(
+    180deg,
+    #00e5ff 0%,
+    #ff2bd6 50%,
+    #00e5ff 100%
+  );
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+@keyframes railPulse {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 10px currentColor;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+  }
+}
+
+/* Scan Sweep Effect */
+.scan-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  animation: scanSweep 3s ease-in-out infinite;
+}
+
+@keyframes scanSweep {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+/* Billboard Scan on View */
+.billboard-scan {
+  position: relative;
+  overflow: hidden;
+}
+
+.billboard-scan::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00e5ff,
+    #ff2bd6,
+    transparent
+  );
+  transition: transform 0.8s ease-in-out;
+  z-index: 10;
+}
+
+.billboard-scan.active::before {
+  transform: translateX(200%);
+}
+
+/* Station Code Label */
+.station-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(122, 130, 153, 0.8);
+}
+
+/* Glassmorphism Utilities - Neo Tokyo Style */
+@layer utilities {
+  .glass {
+    background: rgba(10, 12, 20, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 229, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(26, 29, 40, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+  }
+
+  .glass-chrome {
+    background: linear-gradient(
+      135deg,
+      rgba(26, 29, 40, 0.9) 0%,
+      rgba(10, 12, 20, 0.95) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(122, 130, 153, 0.2);
+  }
+
+  /* Text Gradients */
+  .text-gradient {
+    background: linear-gradient(135deg, #ff2bd6 0%, #00e5ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #00e5ff 0%, #0099aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-magenta {
+    background: linear-gradient(135deg, #ff2bd6 0%, #cc00aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Text Glows */
+  .glow-text-cyan {
+    text-shadow: 
+      0 0 10px rgba(0, 229, 255, 0.5),
+      0 0 20px rgba(0, 229, 255, 0.3),
+      0 0 40px rgba(0, 229, 255, 0.2);
+  }
+
+  .glow-text-magenta {
+    text-shadow: 
+      0 0 10px rgba(255, 43, 214, 0.5),
+      0 0 20px rgba(255, 43, 214, 0.3),
+      0 0 40px rgba(255, 43, 214, 0.2);
+  }
+
+  .glow-text-chrome {
+    text-shadow: 
+      0 0 10px rgba(230, 233, 242, 0.3),
+      0 0 20px rgba(230, 233, 242, 0.1);
+  }
+
+  /* Border Glows */
+  .glow-border-cyan {
+    box-shadow: 
+      0 0 10px rgba(0, 229, 255, 0.3),
+      inset 0 0 10px rgba(0, 229, 255, 0.1);
+  }
+
+  .glow-border-magenta {
+    box-shadow: 
+      0 0 10px rgba(255, 43, 214, 0.3),
+      inset 0 0 10px rgba(255, 43, 214, 0.1);
+  }
+
+  /* Vignette */
+  .vignette {
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 50%,
+      rgba(5, 6, 10, 0.5) 80%,
+      rgba(5, 6, 10, 0.9) 100%
+    );
+  }
+
+  /* Horizon Glow */
+  .horizon-glow {
+    background: linear-gradient(
+      0deg,
+      rgba(0, 229, 255, 0.1) 0%,
+      rgba(255, 43, 214, 0.05) 30%,
+      transparent 60%
+    );
+    animation: horizonPulse 4s ease-in-out infinite;
+  }
+
+  @keyframes horizonPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+}
+
+/* Animation delays for stagger effects */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Marquee pause on hover */
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* Terminal cursor blink (legacy) */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
