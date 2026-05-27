@@ -138,12 +138,12 @@ const Hero = () => {
         {/* Boarding Pass CTAs */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full px-4"
         >
           {/* Primary - View Systems */}
           <motion.button
             onClick={scrollToProjects}
-            className="group relative boarding-pass w-48"
+            className="group relative boarding-pass w-44 sm:w-48"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -163,7 +163,7 @@ const Hero = () => {
           {/* Secondary - Contact */}
           <motion.a
             href="mailto:rahmanamanur51@gmail.com"
-            className="group relative boarding-pass w-48"
+            className="group relative boarding-pass w-44 sm:w-48"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -181,9 +181,9 @@ const Hero = () => {
 
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Centered */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 w-full flex justify-center"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.8, duration: 0.6 }}
@@ -197,7 +197,7 @@ const Hero = () => {
             Scroll
           </span>
           <div className="w-6 h-10 rounded-sm border border-chrome-700 flex justify-center pt-2">
-            <motion.div 
+            <motion.div
               className="w-1 h-2 bg-neon-cyan"
               animate={{ opacity: [1, 0.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
