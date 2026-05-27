@@ -5,7 +5,7 @@ import TerminalContact from './components/TerminalContact'
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-obsidian text-chrome-200 font-sans overflow-x-hidden">
+    <div className="relative min-h-screen bg-obsidian text-chrome-200 font-sans overflow-x-hidden" style={{ backgroundColor: '#05060a' }}>
       {/* Atmospheric Overlay Layers */}
       {/* Scanlines */}
       <div className="fixed inset-0 pointer-events-none z-50 scanlines opacity-40" />

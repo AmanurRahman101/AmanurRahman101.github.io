@@ -128,19 +128,41 @@ body {
 
 /* Chrome Split Line */
 .chrome-split {
-  position: absolute;
-  width: 100%;
+  display: block;
+  position: relative;
+  width: min(80vw, 320px);
   height: 2px;
+  margin: 1.5rem auto 0;
+  left: 0;
+  transform: none;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #00e5ff 25%,
+    #00e5ff 20%,
     #ff2bd6 50%,
-    #00e5ff 75%,
+    #00e5ff 80%,
     transparent 100%
   );
   background-size: 200% 100%;
   animation: chromeSweep 4s ease-in-out infinite;
+  opacity: 0.6;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* Responsive widths for different screen sizes */
+@media (min-width: 640px) {
+  .chrome-split {
+    width: min(60vw, 400px);
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .chrome-split {
+    width: min(40vw, 448px);
+    margin-top: 1.5rem;
+  }
 }
 
 @keyframes chromeSweep {

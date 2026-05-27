@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ChevronDown, Mail } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -103,7 +103,7 @@ const Hero = () => {
         animate="visible"
       >
         {/* Billboard Name */}
-        <motion.div variants={itemVariants} className="relative mb-6">
+        <motion.div variants={itemVariants} className="relative mb-6 flex flex-col items-center">
           <h1 className="font-display text-[4rem] sm:text-[6rem] lg:text-[8rem] leading-[0.85] tracking-tight">
             <span className="inline-block text-gradient glow-text-magenta">
               AMANUR
@@ -113,9 +113,9 @@ const Hero = () => {
               RAHMAN
             </span>
           </h1>
-          
+
           {/* Chrome Split Line */}
-          <div className="chrome-split mt-6 max-w-md mx-auto opacity-60" />
+          <div className="chrome-split" />
         </motion.div>
 
         {/* Sub-display Role */}
@@ -143,14 +143,14 @@ const Hero = () => {
           {/* Primary - View Systems */}
           <motion.button
             onClick={scrollToProjects}
-            className="group relative boarding-pass"
+            className="group relative boarding-pass w-48"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="relative px-8 py-4 bg-asphalt border border-neon-cyan/40 hover:border-neon-cyan transition-colors duration-300">
+            <div className="relative px-6 py-4 bg-asphalt border border-neon-cyan/40 hover:border-neon-cyan transition-colors duration-300 flex items-center justify-center">
               {/* Glow on hover */}
               <div className="absolute inset-0 bg-neon-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative flex items-center gap-3 font-sub text-sm tracking-wider text-neon-cyan uppercase">
+              <span className="relative flex items-center justify-center gap-3 font-sub text-sm tracking-wider text-neon-cyan uppercase">
                 View Systems
                 <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
               </span>
@@ -163,15 +163,15 @@ const Hero = () => {
           {/* Secondary - Contact */}
           <motion.a
             href="mailto:rahmanamanur51@gmail.com"
-            className="group relative boarding-pass"
+            className="group relative boarding-pass w-48"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="relative px-8 py-4 bg-asphalt border border-neon-magenta/40 hover:border-neon-magenta transition-colors duration-300">
+            <div className="relative px-6 py-4 bg-asphalt border border-neon-magenta/40 hover:border-neon-magenta transition-colors duration-300 flex items-center justify-center">
               <div className="absolute inset-0 bg-neon-magenta/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative flex items-center gap-3 font-sub text-sm tracking-wider text-neon-magenta uppercase">
-                <Mail className="w-4 h-4" />
+              <span className="relative flex items-center justify-center gap-3 font-sub text-sm tracking-wider text-neon-magenta uppercase">
                 Contact
+                <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
               </span>
             </div>
             <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-neon-magenta/60" />
