@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Download } from 'lucide-react'
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -176,6 +176,25 @@ const Hero = () => {
             </div>
             <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-neon-magenta/60" />
             <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-neon-magenta/60" />
+          </motion.a>
+
+          {/* Tertiary - Download CV */}
+          <motion.a
+            href="/cv.pdf"
+            download
+            className="group relative boarding-pass w-44 sm:w-48"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className="relative px-6 py-4 bg-asphalt border border-neon-amber/40 hover:border-neon-amber transition-colors duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-neon-amber/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative flex items-center justify-center gap-3 font-sub text-sm tracking-wider text-neon-amber uppercase">
+                Download CV
+                <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-300" />
+              </span>
+            </div>
+            <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-neon-amber/60" />
+            <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-neon-amber/60" />
           </motion.a>
         </motion.div>
 

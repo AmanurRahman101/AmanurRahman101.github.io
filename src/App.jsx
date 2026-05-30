@@ -1,5 +1,6 @@
 import Hero from './components/Hero'
 import TechStack from './components/TechStack'
+import Education from './components/Education'
 import Projects from './components/Projects'
 import TerminalContact from './components/TerminalContact'
 
@@ -24,6 +25,7 @@ function App() {
         <Hero />
         <TechStack />
         <Projects />
+        <Education />
         <TerminalContact />
       </main>
     </div>
