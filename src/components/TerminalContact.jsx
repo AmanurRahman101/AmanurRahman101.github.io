@@ -40,21 +40,18 @@ const TerminalContact = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      handle: 'AmanurRahman101',
       url: 'https://github.com/AmanurRahman101',
       icon: Github,
       color: 'neon-magenta',
     },
     {
       name: 'LinkedIn',
-      handle: 'linkedin.com/in/amanur-rahman-2a8833385',
       url: 'https://linkedin.com/in/amanur-rahman-2a8833385',
       icon: Linkedin,
       color: 'neon-cyan',
     },
     {
       name: 'Email',
-      handle: 'rahmanamanur51@gmail.com',
       url: 'mailto:rahmanamanur51@gmail.com',
       icon: Mail,
       color: 'neon-magenta',
@@ -167,7 +164,7 @@ const TerminalContact = () => {
                         }`}
                       />
                       <span className="font-mono text-sm text-chrome-500 group-hover:text-chrome-300 transition-colors duration-300">
-                        {link.handle}
+                        {link.name}
                       </span>
                     </motion.a>
                   )
