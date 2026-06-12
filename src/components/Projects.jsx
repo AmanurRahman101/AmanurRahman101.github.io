@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { ExternalLink, Lock, Globe, Sparkles, Zap, Monitor, Workflow } from 'lucide-react'
+import { ExternalLink, Lock, Globe, Sparkles, Zap, Monitor, Workflow, Cpu } from 'lucide-react'
 
 const webApplications = [
   {
@@ -44,6 +44,22 @@ const automationWorkflows = [
     icon: Zap,
     railColor: 'neon-amber',
     detailUrl: '/projects/binary-times.html',
+  },
+]
+
+const desktopApplications = [
+  {
+    id: 4,
+    code: 'DESK_01',
+    type: 'WINDOWS DESKTOP APP',
+    title: 'DEGUNK - SYSTEM OPTIMIZER',
+    subtitle: 'C# · WPF · Windows API · RAM Optimization',
+    description:
+      'Windows desktop application that frees up system memory by pausing non-essential background applications for gaming. Features live RAM monitoring with Windows API interop, process tree termination with state persistence, Fluent Design UI with Mica/Acrylic backdrops, and one-click resume functionality.',
+    tech: ['C#', '.NET 6.0', 'WPF', 'P/Invoke', 'Windows API', 'Inno Setup'],
+    icon: Cpu,
+    railColor: 'neon-magenta',
+    detailUrl: '/projects/degunk.html',
   },
 ]
 
@@ -284,7 +300,7 @@ const Projects = () => {
       </div>
 
       {/* AUTOMATION WORKFLOWS */}
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto mb-20">
         <SectionHeader
           icon={Workflow}
           label="CATEGORY_AUTO"
@@ -292,7 +308,7 @@ const Projects = () => {
           subtitle="n8n-powered autonomous systems with multi-agent AI orchestration"
           color="neon-amber"
         />
-        
+
         <div className="space-y-8">
           {automationWorkflows.map((project, index) => (
             <Billboard key={project.id} project={project} index={index} />
@@ -300,9 +316,26 @@ const Projects = () => {
         </div>
       </div>
 
+      {/* DESKTOP APPLICATIONS */}
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          icon={Cpu}
+          label="CATEGORY_DESKTOP"
+          title="DESKTOP APPLICATIONS"
+          subtitle="Native Windows applications with system-level integration and modern UI"
+          color="neon-magenta"
+        />
+
+        <div className="space-y-8">
+          {desktopApplications.map((project, index) => (
+            <Billboard key={project.id} project={project} index={index} />
+          ))}
+        </div>
+      </div>
+
       {/* Transit Footer */}
       <motion.div
-        className="flex justify-center items-center gap-6 mt-16"
+        className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mt-16"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -311,18 +344,23 @@ const Projects = () => {
         <div className="flex items-center gap-2">
           <span className="font-mono text-xs text-chrome-700">DISPLAY</span>
           <span className="font-mono text-xs text-neon-magenta">
-            {webApplications.length + automationWorkflows.length}
+            {webApplications.length + automationWorkflows.length + desktopApplications.length}
           </span>
         </div>
-        <div className="w-8 h-px bg-chrome-700" />
+        <div className="w-8 h-px bg-chrome-700 hidden sm:block" />
         <div className="flex items-center gap-2">
           <span className="font-mono text-xs text-chrome-700">WEB_APPS</span>
           <span className="font-mono text-xs text-neon-cyan">{webApplications.length}</span>
         </div>
-        <div className="w-8 h-px bg-chrome-700" />
+        <div className="w-8 h-px bg-chrome-700 hidden sm:block" />
         <div className="flex items-center gap-2">
           <span className="font-mono text-xs text-chrome-700">AUTOMATION</span>
           <span className="font-mono text-xs text-neon-amber">{automationWorkflows.length}</span>
+        </div>
+        <div className="w-8 h-px bg-chrome-700 hidden sm:block" />
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-xs text-chrome-700">DESKTOP</span>
+          <span className="font-mono text-xs text-neon-magenta">{desktopApplications.length}</span>
         </div>
       </motion.div>
 
