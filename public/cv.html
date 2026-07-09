@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amanur Rahman — Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0.5in 0.55in;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Calibri", "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      line-height: 1.32;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 8.27in;
+      margin: 0 auto;
+      padding: 0.5in 0.55in;
+    }
+
+    h1 {
+      font-size: 20pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #0f2744;
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 2pt;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 10.5pt;
+      color: #2c4a6e;
+      font-weight: 600;
+      margin-bottom: 5pt;
+    }
+
+    .contact {
+      text-align: center;
+      font-size: 8.75pt;
+      color: #333;
+      margin-bottom: 10pt;
+      line-height: 1.5;
+    }
+
+    .contact a {
+      color: #1a1a1a;
+      text-decoration: underline;
+      text-underline-offset: 1.5pt;
+    }
+
+    .placeholder {
+      color: #777;
+      font-style: italic;
+    }
+
+    section {
+      margin-bottom: 8pt;
+    }
+
+    h2 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #0f2744;
+      border-bottom: 1.2pt solid #0f2744;
+      padding-bottom: 1.5pt;
+      margin-bottom: 5pt;
+    }
+
+    .summary {
+      text-align: justify;
+      color: #222;
+      font-size: 9.75pt;
+    }
+
+    .edu-item,
+    .project {
+      margin-bottom: 6pt;
+    }
+
+    .edu-item:last-child,
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10pt;
+    }
+
+    .row .left {
+      font-weight: 700;
+      color: #1a1a1a;
+      font-size: 9.75pt;
+    }
+
+    .row .right {
+      font-size: 9pt;
+      color: #444;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .sub {
+      font-size: 9pt;
+      color: #333;
+      margin-top: 1pt;
+    }
+
+    .sub em {
+      font-style: italic;
+      color: #444;
+    }
+
+    ul {
+      margin: 2pt 0 0 13pt;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 1.5pt;
+      font-size: 9.5pt;
+    }
+
+    .tech {
+      font-size: 8.75pt;
+      color: #2c4a6e;
+      margin-top: 1pt;
+      font-style: italic;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 82pt 1fr;
+      gap: 1.5pt 6pt;
+      font-size: 9.25pt;
+    }
+
+    .skills-grid .label {
+      font-weight: 700;
+      color: #0f2744;
+    }
+
+    .skills-grid .value {
+      color: #222;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        max-width: none;
+      }
+
+      a {
+        color: #1a1a1a;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AMANUR RAHMAN</h1>
+    <p class="title">Software Engineer &nbsp;|&nbsp; Full-Stack Development &amp; AI Systems</p>
+    <p class="contact">
+      Dhaka, Bangladesh
+      &nbsp;|&nbsp; +880 1631-423542
+      &nbsp;|&nbsp; <a href="mailto:rahmanamanur51@gmail.com">rahmanamanur51@gmail.com</a><br />
+      <a href="https://github.com/AmanurRahman101">GitHub</a>
+      &nbsp;|&nbsp; <a href="https://linkedin.com/in/amanur-rahman-2a8833385">LinkedIn</a>
+      &nbsp;|&nbsp; <a href="https://amanurrahman101.github.io">Portfolio</a>
+    </p>
+  </header>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p class="summary">
+      Final-year Computer Science &amp; Engineering student and software engineer with hands-on experience
+      designing and shipping full-stack web applications, AI-powered systems, and desktop software.
+      Proficient in building scalable backends, real-time communication layers, and agentic automation
+      workflows using modern JavaScript/TypeScript, Python, and C# stacks. Seeking software engineering
+      roles in product-driven teams across Bangladesh and internationally.
+    </p>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <span class="label">Languages</span>
+      <span class="value">Python, TypeScript, JavaScript, Java, C#</span>
+      <span class="label">Frontend</span>
+      <span class="value">React 19, HTML5, CSS3, responsive UI design</span>
+      <span class="label">Backend</span>
+      <span class="value">Node.js, Express, FastAPI, REST APIs, JWT authentication</span>
+      <span class="label">Databases</span>
+      <span class="value">MongoDB, MySQL, SQLite, ChromaDB (vector storage)</span>
+      <span class="label">AI / ML</span>
+      <span class="value">LangChain, Gemini AI, Ollama, embeddings, semantic search, RAG pipelines</span>
+      <span class="label">Realtime</span>
+      <span class="value">WebSockets, Agora SDK, event-driven architecture</span>
+      <span class="label">Automation</span>
+      <span class="value">n8n, multi-agent workflows, Facebook Graph API, RSS integration</span>
+      <span class="label">Desktop</span>
+      <span class="value">.NET 6, WPF, Windows API (P/Invoke), Fluent Design</span>
+      <span class="label">DevOps</span>
+      <span class="value">Docker, Git, GitHub, CI-friendly project structure</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="row">
+        <span class="left">Tawasol CRM — Enterprise Multi-Tenant SaaS Platform</span>
+        <span class="right">2025 – Present</span>
+      </div>
+      <p class="tech">React · Node.js · Express · MongoDB · WebSockets · Agora SDK · Gemini AI · JWT</p>
+      <ul>
+        <li>Architected a multi-tenant CRM with tenant-level data isolation for sales pipelines, customer management, and support ticketing.</li>
+        <li>Delivered real-time collaboration via WebSockets and in-browser voice calling; integrated a Gemini-powered agentic chatbot for automated CRUD and customer insights.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="row">
+        <span class="left">Localized Plagiarism Detection — Offline Academic AI System</span>
+        <span class="right">2025</span>
+      </div>
+      <p class="tech">React 19 · FastAPI · Python · SQLite · ChromaDB · Ollama</p>
+      <ul>
+        <li>Engineered a fully offline plagiarism detection pipeline with no external API dependency, designed for academic institutions and privacy-sensitive environments.</li>
+        <li>Implemented local Ollama embeddings with ChromaDB vector search and FastAPI background job dispatching for scalable document analysis.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="row">
+        <span class="left">Binary Times — Autonomous News Publishing Pipeline</span>
+        <span class="right">2025</span>
+      </div>
+      <p class="tech">n8n · LangChain · Gemini 2.5 Pro · Facebook Graph API · Google Sheets · Node.js</p>
+      <ul>
+        <li>Built an end-to-end agentic workflow that ingests RSS feeds, filters and rewrites content with LangChain and Gemini, generates branded graphics, and auto-publishes to Facebook.</li>
+        <li>Designed audit logging and state tracking across Google Sheets and database storage for reliable unattended operation.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="row">
+        <span class="left">DeGunk — Windows System Optimizer (Open Source)</span>
+        <span class="right">2024</span>
+      </div>
+      <p class="tech">C# · .NET 6 · WPF · Windows API (P/Invoke) · Inno Setup</p>
+      <ul>
+        <li>Developed a desktop utility that optimizes RAM for gaming by suspending non-essential processes with one-click session restore and live memory monitoring.</li>
+        <li>Shipped a production-ready installer with Fluent Design UI (Mica/Acrylic); released under the MIT License on GitHub.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+
+    <div class="edu-item">
+      <div class="row">
+        <span class="left">North South University</span>
+        <span class="right">Dhaka, Bangladesh</span>
+      </div>
+      <div class="row">
+        <span class="sub"><em>Bachelor of Science in Computer Science &amp; Engineering</em></span>
+        <span class="right">Aug 2022 – Present</span>
+      </div>
+      <p class="sub">
+        Expected Graduation: 2026
+        &nbsp;|&nbsp; Relevant Coursework: Data Structures, Algorithms, OOP, Database Systems, Operating Systems, Computer Networks
+      </p>
+    </div>
+
+    <div class="edu-item">
+      <div class="row">
+        <span class="left">Willes Little Flower School &amp; College</span>
+        <span class="right">Dhaka, Bangladesh</span>
+      </div>
+      <div class="row">
+        <span class="sub"><em>Edexcel International A Levels</em></span>
+      </div>
+      <p class="sub">
+        Mathematics, Physics, Chemistry, Computer Science
+      </p>
+    </div>
+
+    <div class="edu-item">
+      <div class="row">
+        <span class="left">Willes Little Flower School &amp; College</span>
+        <span class="right">Dhaka, Bangladesh</span>
+      </div>
+      <div class="row">
+        <span class="sub"><em>Edexcel International O Levels</em></span>
+      </div>
+      <p class="sub">
+        Mathematics, Physics, Chemistry, Biology, English, ICT
+      </p>
+    </div>
+  </section>
+</body>
+</html>

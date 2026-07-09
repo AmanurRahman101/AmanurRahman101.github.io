@@ -6,6 +6,10 @@ const Hero = () => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -161,8 +165,9 @@ const Hero = () => {
           </motion.button>
 
           {/* Secondary - Contact */}
-          <motion.a
-            href="mailto:rahmanamanur51@gmail.com"
+          <motion.button
+            type="button"
+            onClick={scrollToContact}
             className="group relative boarding-pass w-44 sm:w-48"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -176,7 +181,7 @@ const Hero = () => {
             </div>
             <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-neon-magenta/60" />
             <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-neon-magenta/60" />
-          </motion.a>
+          </motion.button>
 
           {/* Tertiary - Download CV */}
           <motion.a

@@ -59,7 +59,7 @@ const TerminalContact = () => {
   ]
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative">
       {/* Chrome Top Border to match billboards */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon-cyan/30 to-transparent" />
 
